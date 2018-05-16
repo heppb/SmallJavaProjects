@@ -19,16 +19,17 @@ public class JpgToPng {
 			inputFile = files[x].getAbsolutePath();
 			System.out.println(inputFile);
 			outputFile = files[x].getPath();
+			//takes off the .jpg and adds the .png suffix, gets saved as a PNG file in the write section.
+			//This code would fail if the file did not have an end type, however then the inputfile would not be a .jpg
 			outputFile = outputFile.substring(0, outputFile.lastIndexOf('.')) + ".png";
 			System.out.println(outputFile);
 			
-			// read a jpeg from a inputFile
+			//read image
 			BufferedImage bufferedImage = ImageIO.read(new File(inputFile));
-
-			// write the bufferedImage back to outputFile
+			
+			//write image
 			ImageIO.write(bufferedImage, "png", new File(outputFile));
-
-			// this writes the bufferedImage into a byte array called resultingBytes
+			
 			ByteArrayOutputStream byteArrayOut = new ByteArrayOutputStream();
 			ImageIO.write(bufferedImage, "png", byteArrayOut);
 			byte[] resultingBytes = byteArrayOut.toByteArray();
